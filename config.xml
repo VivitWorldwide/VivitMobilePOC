@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+/**********************************************************************************
+ *                       - V i v i t   W o r l d w id e -
+ *
+ * config.xml (VivitMobilePOC)
+ *=================================================================================
+ * Written by: Mark Ford / 02-11-2017
+ *
+ * PhoneGap config file.
+ **********************************************************************************/
+-->
+
+<widget xmlns="http://www.w3.org/ns/widgets" 
+		xmlns:gap="http://phonegap.com/ns/1.0"
+		id="com.vivit.worldwide.mobile.poc"
+		version="1.0.0">
+
+
+	<!--===============================================================================
+	 | PhoneGap information.
+	 ================================================================================-->
+
+	<name>VivitMobilePOC</name>
+	<description>Proof of concept app to experiment with getting the technologies in place.</description>
+	<author email="IT.Support@vivit-worldwide.org" href="http://www.vivit-worldwide.org">Vivit Worldwide</author>
+	<content src="index.html" />
+	<access origin="*" />
+
+
+	<!--===============================================================================
+	 | Android specific preferences.
+	 ================================================================================-->
+
+	<platform name="android" />
+	<preference name="android-targetSdkVersion" value="23"/>
+
+
+	<!--===============================================================================
+	 | iOS specific preferences.
+	 ================================================================================-->
+
+	<platform name="ios" />
+
+
+	<!--===============================================================================
+	 | PhoneGap/Cordova plugins.
+	 ================================================================================-->
+
+    <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser" />
+
+</widget>
