@@ -29,18 +29,25 @@
 
 
 	<!--===============================================================================
+	 | Need to figure out how to make the icons platform specific.
+	 ================================================================================-->
+    <icon src="www/platforms/android/icon/vivit_logo_hdpi.png" />
+
+
+	<!--===============================================================================
 	 | Android specific preferences.
 	 ================================================================================-->
 
-	<platform name="android" />
-	<preference name="android-targetSdkVersion" value="23"/>
+	<platform name="android">
+		<preference name="android-targetSdkVersion" value="23"/>
+	</platform>
 
 
 	<!--===============================================================================
 	 | iOS specific preferences.
 	 ================================================================================-->
 
-	<platform name="ios" />
+	<platform name="ios"/>
 
 
 	<!--===============================================================================
