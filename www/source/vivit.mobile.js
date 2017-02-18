@@ -12,6 +12,7 @@
  * Global variables.
  **********************************************************************************/
 var inAppBrowserRef;
+var requestEvents 		= new XMLHttpRequest();
 
 
 /**********************************************************************************
@@ -30,30 +31,119 @@ $(document).ready(function() {
 	$('#mainPanel').on('click', '#website', function() {											// load the vivit website when prompted
 		launchWebsite();
 	});
+
+	$('#mainPanel').on('click', '#loadEvents', function() {											// load the events from the vivit website
+		loadEvents();
+	});
+	
+	loadEvents();
 });
 
 
 /**********************************************************************************
  * Events.
  **********************************************************************************/
-function events() {
-	var request = new XMLHttpRequest();
+function loadEvents() {
+	requestEvents.onreadystatechange = function() {displayEvents();};
+	requestEvents.open("GET", "http://c.ymcdn.com/sites/vivitworldwide.site-ym.com/resource/rss/events.rss", true);
+	requestEvents.send();
+}
 
-	request.onreadystatechange = function() {
-		if(request.readyState == XMLHttpRequest.DONE & request.status == 200) {
-			var parser = new DOMParser();
-			var xmlDoc = parser.parseFromString(request.responseText, 'text/xml');
-			var title  = xmlDoc.getElementsByTagName('title');
-			alert(title.length);
-			for (var i = 0; i < title.length; i++) { 
-				alert(title[i].childNodes[0].nodeValue);
-			}
+
+/**********************************************************************************
+ * Events.
+ **********************************************************************************/
+function displayEvents() {
+	var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	var mons = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+	var html = "<div class='eventHeader'>Upcoming Events</div>";
+	
+	if(requestEvents.readyState == XMLHttpRequest.DONE & requestEvents.status == 200) {
+		var parser 	= new DOMParser();
+		var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
+		var pubDate = xmlDoc.getElementsByTagName('pubDate');
+		var title  	= xmlDoc.getElementsByTagName('title');
+		var desc  	= xmlDoc.getElementsByTagName('description');
+
+		for (var index1=1; index1<title.length; index1++) { 
+			var dateSplit = pubDate[index1].childNodes[0].nodeValue.split(" ");
+			var timeSplit = dateSplit[4].split(":");
+			var eventDate = new Date(Date.UTC(dateSplit[3], convertMonStrInt(dateSplit[2]), dateSplit[1], timeSplit[0], timeSplit[1], timeSplit[2]));
+			var eventZone = String(eventDate).split("(");
+
+			html += "<div id=event_" + index1 + "'>";
+			html += "<div class='eventDate'>" + days[eventDate.getDay()] +", " + mons[eventDate.getMonth()] + " " + eventDate.getDate() + ", " + eventDate.getFullYear() + "</div>";
+			html += "<div class='eventLine'></div>";
+			html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[index1].childNodes[0].nodeValue + "</div>";
+			html += "<div class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</div>";
+			html += "<div class='eventLine'></div>";
+			html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'>Register</span>"
+			html += "</div>";
 		}
-	}
 
-	request.open("GET", "http://c.ymcdn.com/sites/vivitworldwide.site-ym.com/resource/rss/events.rss", true);
-		
-	request.send();
+		html += "<div data-role='popup' id='popupBasic'><div data-role='main' class='ui-content'><div id='popupContent'></div><a href='#' class='ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left' data-rel='back'>Close</a></div></div></div>";
+
+		$('#eventPage').html(html);
+	}
+}
+
+
+/**********************************************************************************
+ * 
+ **********************************************************************************/
+function eventInfo(which) {
+	var parser 	= new DOMParser();
+	var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
+	var desc  	= xmlDoc.getElementsByTagName('description');
+
+	$('#popupContent').html(desc[which].firstChild.nodeValue);
+	$('#popupBasic').popup();
+	$('#popupBasic').popup("open");
+}    
+
+
+
+/**********************************************************************************
+ * 
+ **********************************************************************************/
+function convertMonStrInt(monthStr) {
+	var monthInt;
+	
+	switch(monthStr) {
+    	case "Jan": monthInt =  0; break;
+    	case "Feb": monthInt =  1; break;
+    	case "Mar": monthInt =  2; break;
+    	case "Apr": monthInt =  3; break;
+    	case "May": monthInt =  4; break;
+    	case "Jun": monthInt =  5; break;
+    	case "Jul": monthInt =  6; break;
+    	case "Aug": monthInt =  7; break;
+    	case "Sep": monthInt =  8; break;
+    	case "Oct": monthInt =  9; break;
+    	case "Nov": monthInt = 10; break;
+    	case "Dec": monthInt = 11; break;
+    	default:    monthInt =  0; break;
+	}
+	
+	return monthInt;
+}
+
+
+/**********************************************************************************
+ * Launch the Vivit Website.
+ **********************************************************************************/
+function formatAMPM(date) {
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var ampm = hours >= 12 ? 'pm' : 'am';
+
+	hours = hours % 12;
+	hours = hours ? hours : 12; // the hour '0' should be '12'
+	minutes = minutes < 10 ? '0'+minutes : minutes;
+	var strTime = hours + ':' + minutes + ' ' + ampm;
+
+	return strTime;
 }
 
 
