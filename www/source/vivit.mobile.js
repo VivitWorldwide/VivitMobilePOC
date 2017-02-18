@@ -34,6 +34,30 @@ $(document).ready(function() {
 
 
 /**********************************************************************************
+ * Events.
+ **********************************************************************************/
+function events() {
+	var request = new XMLHttpRequest();
+
+	request.onreadystatechange = function() {
+		if(request.readyState == XMLHttpRequest.DONE & request.status == 200) {
+			var parser = new DOMParser();
+			var xmlDoc = parser.parseFromString(request.responseText, 'text/xml');
+			var title  = xmlDoc.getElementsByTagName('title');
+			alert(title.length);
+			for (var i = 0; i < title.length; i++) { 
+				alert(title[i].childNodes[0].nodeValue);
+			}
+		}
+	}
+
+	request.open("GET", "http://c.ymcdn.com/sites/vivitworldwide.site-ym.com/resource/rss/events.rss", true);
+		
+	request.send();
+}
+
+
+/**********************************************************************************
  * Launch the Vivit Website.
  **********************************************************************************/
 function launchWebsite() {
