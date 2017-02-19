@@ -19,7 +19,8 @@ module.exports = [
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-inappbrowser": "1.6.2-dev"
+    "cordova-plugin-inappbrowser": "1.6.2-dev",
+    "cordova-plugin-whitelist": "1.3.1"
 }
 // BOTTOM OF METADATA
 });

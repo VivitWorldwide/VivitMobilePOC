@@ -39,7 +39,7 @@
 	 ================================================================================-->
 
 	<platform name="android">
-		<preference name="android-targetSdkVersion" value="23"/>
+		<preference name="android-targetSdkVersion" value="25"/>
 	</platform>
 
 
@@ -54,6 +54,16 @@
 	 | PhoneGap/Cordova plugins.
 	 ================================================================================-->
 
-    <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser" />
+    <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser"/>
+	<plugin name="cordova-plugin-whitelist" spec="https://github.com/apache/cordova-plugin-whitelist"/>
+	
+
+	<!--===============================================================================
+	 | Whitelisted URLs.
+	 ================================================================================-->
+
+	<allow-navigation href="https://vivitworldwide.site-ym.com/*"/>
+	<allow-navigation href="http://c.ymcdn.com/*"/>
+
 
 </widget>
