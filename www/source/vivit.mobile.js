@@ -96,8 +96,11 @@ function eventInfo(which) {
 	var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
 	var items 	= xmlDoc.getElementsByTagName('item');
 	var desc  	= items[which].getElementsByTagName('description');
-
-	$('#popupContent').html(desc[0].firstChild.nodeValue);
+	var html    = desc[0].firstChild.nodeValue;
+	
+	html += "<br/><br/><a href='#' onclick='eventReg(" + which + ")'>Register</a><br/><br/>";
+	
+	$('#popupContent').html(html);
 	$('#popupBasic').popup();
 	$('#popupBasic').popup("open");
 }    
@@ -115,8 +118,6 @@ function eventReg(which) {
 	$("body").pagecontainer("change", "#vivitWebsite");
 	
 	launchWebsite(link[0].firstChild.nodeValue);
-//	launchWebsite("https://vivitworldwide.site-ym.com/events/EventDetails.aspx?id=925778");
-//	launchWebsite("http://vivit-worldwide.org/");
 }    
 
 
@@ -190,7 +191,7 @@ function loadStartCallBack() {
  **********************************************************************************/
 function loadStopCallBack() {
 	if (inAppBrowserRef != undefined) {
-    	$("#websiteReference").text("Reload the Vivit Website (make this a link or button or something");
+    	$("#websiteReference").text("Reload the Vivit Website (make this a link or button or something)");
     	inAppBrowserRef.insertCSS({ code: "body{font-size: 25px;" });
     	inAppBrowserRef.show();
 	}
