@@ -13,6 +13,7 @@
  **********************************************************************************/
 var inAppBrowserRef;
 var requestEvents 		= new XMLHttpRequest();
+var parser 				= new DOMParser();
 
 
 /**********************************************************************************
@@ -29,7 +30,7 @@ $(document).ready(function() {
 	$('#mainPanel').enhanceWithin().panel();														// establish the main panel
 
 	$('#mainPanel').on('click', '#website', function() {											// load the vivit website when prompted
-		launchWebsite();
+		launchWebsite("http://vivit-worldwide.org/");
 	});
 
 	$('#mainPanel').on('click', '#loadEvents', function() {											// load the events from the vivit website
@@ -60,14 +61,13 @@ function displayEvents() {
 	var html = "<div class='eventHeader'>Upcoming Events</div>";
 	
 	if(requestEvents.readyState == XMLHttpRequest.DONE & requestEvents.status == 200) {
-		var parser 	= new DOMParser();
 		var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
-		var pubDate = xmlDoc.getElementsByTagName('pubDate');
-		var title  	= xmlDoc.getElementsByTagName('title');
-		var desc  	= xmlDoc.getElementsByTagName('description');
+		var items 	= xmlDoc.getElementsByTagName('item');
 
-		for (var index1=1; index1<title.length; index1++) { 
-			var dateSplit = pubDate[index1].childNodes[0].nodeValue.split(" ");
+		for (var index1=1; index1<items.length; index1++) {
+			var pubDate   = items[index1].getElementsByTagName('pubDate');
+			var title  	  = items[index1].getElementsByTagName('title');
+			var dateSplit = pubDate[0].childNodes[0].nodeValue.split(" ");
 			var timeSplit = dateSplit[4].split(":");
 			var eventDate = new Date(Date.UTC(dateSplit[3], convertMonStrInt(dateSplit[2]), dateSplit[1], timeSplit[0], timeSplit[1], timeSplit[2]));
 			var eventZone = String(eventDate).split("(");
@@ -75,10 +75,10 @@ function displayEvents() {
 			html += "<div id=event_" + index1 + "'>";
 			html += "<div class='eventDate'>" + days[eventDate.getDay()] +", " + mons[eventDate.getMonth()] + " " + eventDate.getDate() + ", " + eventDate.getFullYear() + "</div>";
 			html += "<div class='eventLine'></div>";
-			html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[index1].childNodes[0].nodeValue + "</div>";
+			html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[0].childNodes[0].nodeValue + "</div>";
 			html += "<div class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</div>";
 			html += "<div class='eventLine'></div>";
-			html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'>Register</span>"
+			html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + index1 + ")'>Register</a></span>"
 			html += "</div>";
 		}
 
@@ -93,11 +93,11 @@ function displayEvents() {
  * 
  **********************************************************************************/
 function eventInfo(which) {
-	var parser 	= new DOMParser();
 	var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
-	var desc  	= xmlDoc.getElementsByTagName('description');
+	var items 	= xmlDoc.getElementsByTagName('item');
+	var desc  	= items[which].getElementsByTagName('description');
 
-	$('#popupContent').html(desc[which].firstChild.nodeValue);
+	$('#popupContent').html(desc[0].firstChild.nodeValue);
 	$('#popupBasic').popup();
 	$('#popupBasic').popup("open");
 }    
@@ -107,8 +107,25 @@ function eventInfo(which) {
 /**********************************************************************************
  * 
  **********************************************************************************/
+function eventReg(which) {
+	var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
+	var items 	= xmlDoc.getElementsByTagName('item');
+	var link  	= items[which].getElementsByTagName('link');
+	
+	$("body").pagecontainer("change", "#vivitWebsite");
+	
+	launchWebsite(link[0].firstChild.nodeValue);
+//	launchWebsite("https://vivitworldwide.site-ym.com/events/EventDetails.aspx?id=925778");
+//	launchWebsite("http://vivit-worldwide.org/");
+}    
+
+
+
+/**********************************************************************************
+ * 
+ **********************************************************************************/
 function convertMonStrInt(monthStr) {
-	var monthInt;
+	var monthInt = 0;
 	
 	switch(monthStr) {
     	case "Jan": monthInt =  0; break;
@@ -123,7 +140,6 @@ function convertMonStrInt(monthStr) {
     	case "Oct": monthInt =  9; break;
     	case "Nov": monthInt = 10; break;
     	case "Dec": monthInt = 11; break;
-    	default:    monthInt =  0; break;
 	}
 	
 	return monthInt;
@@ -150,8 +166,7 @@ function formatAMPM(date) {
 /**********************************************************************************
  * Launch the Vivit Website.
  **********************************************************************************/
-function launchWebsite() {
-	var url		= "http://vivit-worldwide.org/"
+function launchWebsite(url) {
 	var target 	= "_blank";
 	var options = "location=yes,hidden=yes";
 

@@ -62,8 +62,8 @@
 	 | Whitelisted URLs.
 	 ================================================================================-->
 
+	<allow-navigation href="http://www.vivit-worldwide.org/*"/>
 	<allow-navigation href="https://vivitworldwide.site-ym.com/*"/>
 	<allow-navigation href="http://c.ymcdn.com/*"/>
-
 
 </widget>
