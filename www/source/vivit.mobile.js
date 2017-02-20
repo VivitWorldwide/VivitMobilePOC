@@ -64,7 +64,7 @@ function displayEvents() {
 		var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
 		var items 	= xmlDoc.getElementsByTagName('item');
 
-		for (var index1=1; index1<items.length; index1++) {
+		for (var index1=0; index1<items.length; index1++) {
 			var pubDate   = items[index1].getElementsByTagName('pubDate');
 			var title  	  = items[index1].getElementsByTagName('title');
 			var dateSplit = pubDate[0].childNodes[0].nodeValue.split(" ");
