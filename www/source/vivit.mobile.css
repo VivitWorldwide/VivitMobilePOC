@@ -63,7 +63,14 @@ a {
 }
 
 .mainPanelVersion {
-	padding: 15px; 
+	padding-top: 15px;
+	padding-left: 15px; 
+	font-size: 8pt;
+}
+
+.mainPanelBuild {
+	padding-left: 15px; 
+	margin-bottom: 15px;
 	font-size: 8pt;
 }
 
