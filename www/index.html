@@ -20,7 +20,7 @@
 		<link rel='stylesheet' href='jquery_cdn/jquery.mobile-1.4.5.min.css'>
 		<link rel='stylesheet' href='source/vivit.mobile.css'>
 		
-		<script src="cordova.js"></script>
+		<script src="phonegap.js"></script>
 		<script src='jquery_cdn/jquery-1.11.3.min.js'></script>
 		<script src='jquery_cdn/jquery.mobile-1.4.5.min.js'></script>
 		<script src='source/vivit.mobile.js'></script>
@@ -29,57 +29,66 @@
 <body>
 	<div id='mainPanel' data-role='panel'></div>
 
-	<div id='events' data-role='page'>
+	<div id='pocOnly' data-role='page'>
 		<div id='mainHeader1' data-role='header' data-position='fixed' class='mainHeader'></div>
 
 		<div data-role='main' class='ui-content'>
 			<div id='mainBannerAdd1'></div>
-			<img src='images\vivit_events.bmp' width='100%'>
+			<div class='pocPage'>This is a POC (proof of concept) version of the Vivit Mobile app. It is not in any way reflective of the actual Vivit Mobile app. It is purely for experimentation with the technologies required to create the real Vivit Mobile app and various design ideas.<br/><br/>This contains experimental features, things that don't work or that don't work very well, and most likely a few bugs here and there.</div>
 		</div>
 	</div>
 
-	<div id='memberBrochure' data-role='page'>
+	<div id='events' data-role='page'>
 		<div id='mainHeader2' data-role='header' data-position='fixed' class='mainHeader'></div>
 
 		<div data-role='main' class='ui-content'>
 			<div id='mainBannerAdd2'></div>
+			<div id='eventPage' class='eventPage'>Loading Events...</div>
+		</div>
+	</div>
+
+	<div id='memberBrochure' data-role='page'>
+		<div id='mainHeader3' data-role='header' data-position='fixed' class='mainHeader'></div>
+
+		<div data-role='main' class='ui-content'>
+			<div id='mainBannerAdd3'></div>
 			<img src='images\2017_VivitMemberBrochure.bmp' width='100%'>
 		</div>
 	</div>
 
 	<div id='lugsSigs' data-role='page'>
-		<div id='mainHeader3' data-role='header' data-position='fixed' class='mainHeader'></div>
+		<div id='mainHeader4' data-role='header' data-position='fixed' class='mainHeader'></div>
 
 		<div data-role='main' class='ui-content'>
-			<div id='mainBannerAdd3'></div>
+			<div id='mainBannerAdd4'></div>
 			<img src='images\lugs_sigs.bmp' width='100%'>
 		</div>
 	</div>
 
 	<div id='techBeacon' data-role='page'>
-		<div id='mainHeader4' data-role='header' data-position='fixed' class='mainHeader'></div>
+		<div id='mainHeader5' data-role='header' data-position='fixed' class='mainHeader'></div>
 
 		<div data-role='main' class='ui-content'>
-			<div id='mainBannerAdd4'></div>
+			<div id='mainBannerAdd5'></div>
 			<img src='images\tech_beacon.bmp' width='100%'>
 		</div>
 	</div>
 
 	<div id='vivitWebsite' data-role='page'>
-		<div id='mainHeader5' data-role='header' data-position='fixed' class='mainHeader'></div>
+		<div id='mainHeader6' data-role='header' data-position='fixed' class='mainHeader'></div>
 
 		<div data-role='main' class='ui-content'>
-			<div id='mainBannerAdd5'></div>
+			<div id='mainBannerAdd6'></div>
 			<br/><br/>
 			<div id='websiteReference'></div>
 		</div>
 	</div>
 
 	<div id='appSettings' data-role='page'>
-		<div id='mainHeader6' data-role='header' data-position='fixed' class='mainHeader'></div>
+		<div id='mainHeader7' data-role='header' data-position='fixed' class='mainHeader'></div>
 
 		<div data-role='main' class='ui-content'>
-			<div id='mainBannerAdd6'></div>
+			<div id='mainBannerAdd7'></div>
 			<div>
 				Notifications: <input type='checkbox' data-role='flipswitch' name='switch' id='switch' checked>
 			</div>

@@ -24,6 +24,39 @@ a {
 	background-color: white;	
 }
 
+.mainHeaderLeft {
+	position: absolute;
+	top: 15px;
+	left: 20px;
+}
+
+.mainHeaderRight {
+	position: absolute;
+	float: right;
+	top: 12px;
+	right: 10px
+}
+
+.mainHeaderMenuButton {
+	height: 35px;
+	padding-right: 20px;
+}
+
+.mainHeaderTitle {
+	position: absolute;
+	top: 0px;
+	left: 75px;
+	font-size: 22pt;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.mainHeaderIcon {
+	background-color: white;
+	height: 45px;
+	width: 45px;
+}
+
 .mainPanel {
 	background-color: #518bc9;
 }
@@ -63,12 +96,83 @@ a {
 }
 
 .mainPanelVersion {
-	padding: 15px; 
+	padding-top: 15px;
+	padding-left: 15px; 
+	font-size: 8pt;
+}
+
+.mainPanelBuild {
+	padding-left: 15px; 
+	margin-bottom: 15px;
 	font-size: 8pt;
 }
 
 .mainBannerAddBlackLine {
 	height: 1px;
 	background-color: black;
+}
+
+.pocPage {
+	margin-top: 10px;
+	font-size: 18pt;
+	font-weight: bold;	
+}
+
+.eventPage {
+	margin-top: 10px;	
+}
+
+.eventDateItem {
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
+.eventItem {
+	padding: 10px;
+	margin-bottom: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
+.eventHeader {
+	padding: 10px;
+	margin-bottom: 10px;
+	color: white;
+	background-color: #103a71;
+}
+
+.eventDate {
+	color: green;
+	font-size: 16pt;
+	font-style: italic;	
+}
+
+.eventTitle {
+	font-size: 12pt;
+	font-color: #103a71;
+	font-weight: bold;	
+}
+
+.eventTime {
+	margin-top: 20px;
+	font-size: 10pt;
+	font-style: italic;	
+}
+
+.eventAction {
+	margin-left: 10px;
+	margin-right: 20px;
+	font-size: 10pt;
+	font-style: italic;	
+}
+
+.eventLine {
+	height: 1px;
+	margin-top:5px;
+	margin-bottom:5px;
+	background-color: grey;
 }
 

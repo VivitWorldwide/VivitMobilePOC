@@ -14,7 +14,9 @@
 <widget xmlns="http://www.w3.org/ns/widgets" 
 		xmlns:gap="http://phonegap.com/ns/1.0"
 		id="com.vivit.worldwide.mobile.poc"
-		version="1.0.0">
+		version="1.0.0"
+		android-versionCode="170510" 
+		ios-CFBundleVersion="170510">
 
 
 	<!--===============================================================================
@@ -39,7 +41,7 @@
 	 ================================================================================-->
 
 	<platform name="android">
-		<preference name="android-targetSdkVersion" value="23"/>
+		<preference name="android-targetSdkVersion" value="25"/>
 	</platform>
 
 
@@ -54,6 +56,16 @@
 	 | PhoneGap/Cordova plugins.
 	 ================================================================================-->
 
-    <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser" />
+    <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser"/>
+	<plugin name="cordova-plugin-whitelist" spec="https://github.com/apache/cordova-plugin-whitelist"/>
+	
+
+	<!--===============================================================================
+	 | Whitelisted URLs.
+	 ================================================================================-->
+
+	<allow-navigation href="http://www.vivit-worldwide.org/*"/>
+	<allow-navigation href="https://vivitworldwide.site-ym.com/*"/>
+	<allow-navigation href="http://c.ymcdn.com/*"/>
 
 </widget>
