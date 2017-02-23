@@ -22,7 +22,7 @@ var parser 				= new DOMParser();
 $(document).ready(function() {
 	$('#mainPanel').load('source/mainPanel.htm');													// load the main panel html
 	
-	for (var indx1=1; indx1<7; indx1++) {															// load the main header html onto each page
+	for (var indx1=1; indx1<8; indx1++) {															// load the main header html onto each page
 		$('#mainHeader' + indx1).load('source/mainHeader.htm');
 		$('#mainBannerAdd' + indx1).load('source/mainBannerAdd.htm');								// load the main banner add html onto each page
 	}
@@ -36,8 +36,6 @@ $(document).ready(function() {
 	$('#mainPanel').on('click', '#loadEvents', function() {											// load the events from the vivit website
 		loadEvents();
 	});
-	
-	loadEvents();
 });
 
 
@@ -61,8 +59,10 @@ function displayEvents() {
 	var html = "<div class='eventHeader'>Upcoming Events</div>";
 	
 	if(requestEvents.readyState == XMLHttpRequest.DONE & requestEvents.status == 200) {
-		var xmlDoc 	= parser.parseFromString(requestEvents.responseText, 'text/xml');
-		var items 	= xmlDoc.getElementsByTagName('item');
+		var xmlDoc 	  = parser.parseFromString(requestEvents.responseText, 'text/xml');
+		var items 	  = xmlDoc.getElementsByTagName('item');
+		var saveDate  = new Date();
+		var today 	  = new Date(saveDate.getFullYear(), saveDate.getMonth(), saveDate.getDate(), 0, 0, 0, 0);
 
 		for (var index1=0; index1<items.length; index1++) {
 			var pubDate   = items[index1].getElementsByTagName('pubDate');
@@ -72,14 +72,21 @@ function displayEvents() {
 			var eventDate = new Date(Date.UTC(dateSplit[3], convertMonStrInt(dateSplit[2]), dateSplit[1], timeSplit[0], timeSplit[1], timeSplit[2]));
 			var eventZone = String(eventDate).split("(");
 
-			html += "<div id=event_" + index1 + "'>";
-			html += "<div class='eventDate'>" + days[eventDate.getDay()] +", " + mons[eventDate.getMonth()] + " " + eventDate.getDate() + ", " + eventDate.getFullYear() + "</div>";
-			html += "<div class='eventLine'></div>";
-			html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[0].childNodes[0].nodeValue + "</div>";
-			html += "<div class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</div>";
-			html += "<div class='eventLine'></div>";
-			html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + index1 + ")'>Register</a></span>"
-			html += "</div>";
+			if (eventDate < today) continue;
+			
+			if (eventDate.getTime() !== saveDate.getTime()) {
+				saveDate = eventDate;
+				html += "<div id=eventDate_" + index1 + "' class='eventDateItem'>";
+				html += "<div class='eventDate'>" + days[eventDate.getDay()] +", " + mons[eventDate.getMonth()] + " " + eventDate.getDate() + ", " + eventDate.getFullYear() + "</div>";
+				html += "</div>";
+			
+				html += "<div id=eventItem_" + index1 + "' class='eventItem'>";
+				html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[0].childNodes[0].nodeValue + "</div>";
+				html += "<div class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</div>";
+				html += "<div class='eventLine'></div>";
+				html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + index1 + ")'>Register</a></span>"
+				html += "</div>";
+			}
 		}
 
 		html += "<div data-role='popup' id='popupBasic'><div data-role='main' class='ui-content'><div id='popupContent'></div><a href='#' class='ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left' data-rel='back'>Close</a></div></div></div>";

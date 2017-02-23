@@ -24,6 +24,39 @@ a {
 	background-color: white;	
 }
 
+.mainHeaderLeft {
+	position: absolute;
+	top: 15px;
+	left: 20px;
+}
+
+.mainHeaderRight {
+	position: absolute;
+	float: right;
+	top: 12px;
+	right: 10px
+}
+
+.mainHeaderMenuButton {
+	height: 35px;
+	padding-right: 20px;
+}
+
+.mainHeaderTitle {
+	position: absolute;
+	top: 0px;
+	left: 75px;
+	font-size: 22pt;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.mainHeaderIcon {
+	background-color: white;
+	height: 45px;
+	width: 45px;
+}
+
 .mainPanel {
 	background-color: #518bc9;
 }
@@ -79,25 +112,46 @@ a {
 	background-color: black;
 }
 
+.pocPage {
+	margin-top: 10px;
+	font-size: 18pt;
+	font-weight: bold;	
+}
+
 .eventPage {
 	margin-top: 10px;	
 }
 
+.eventDateItem {
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
+.eventItem {
+	padding: 10px;
+	margin-bottom: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
 .eventHeader {
 	padding: 10px;
+	margin-bottom: 10px;
 	color: white;
 	background-color: #103a71;
 }
 
 .eventDate {
-	margin-top: 50px;
 	color: green;
 	font-size: 16pt;
 	font-style: italic;	
 }
 
 .eventTitle {
-	font-size: 10pt;
+	font-size: 12pt;
 	font-color: #103a71;
 	font-weight: bold;	
 }
