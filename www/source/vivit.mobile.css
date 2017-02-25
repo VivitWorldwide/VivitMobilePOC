@@ -128,6 +128,7 @@ a {
 	margin-bottom: 10px;
 	border-style: outset;
 	border-width: 1px;
+	background-color: #103a71;
 }
 
 .eventItem {
@@ -137,23 +138,29 @@ a {
 	border-width: 1px;
 }
 
-.eventHeader {
-	padding: 10px;
-	margin-bottom: 10px;
+.eventDate {
+	font-size: 16pt;
+	font-style: italic;
 	color: white;
-	background-color: #103a71;
 }
 
-.eventDate {
-	color: green;
-	font-size: 16pt;
-	font-style: italic;	
+.eventFloat {
+	clear: both;
+	overflow: hidden;	
 }
 
 .eventTitle {
+	width: 80%;
+	height: 100%;
+	float: left;
 	font-size: 12pt;
 	font-color: #103a71;
-	font-weight: bold;	
+	font-weight: bold;
+}
+
+.eventImage {
+	float: right;
+	width: 50px;
 }
 
 .eventTime {
@@ -162,17 +169,16 @@ a {
 	font-style: italic;	
 }
 
+.eventLine {
+	height: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: grey;
+}
+
 .eventAction {
 	margin-left: 10px;
 	margin-right: 20px;
 	font-size: 10pt;
 	font-style: italic;	
 }
-
-.eventLine {
-	height: 1px;
-	margin-top:5px;
-	margin-bottom:5px;
-	background-color: grey;
-}
-

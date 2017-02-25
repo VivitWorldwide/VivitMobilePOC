@@ -56,8 +56,8 @@ function displayEvents() {
 	var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 	var mons = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-	var html = "<div class='eventHeader'>Upcoming Events</div>";
-	
+	var html = "";
+
 	if(requestEvents.readyState == XMLHttpRequest.DONE & requestEvents.status == 200) {
 		var xmlDoc 	  = parser.parseFromString(requestEvents.responseText, 'text/xml');
 		var items 	  = xmlDoc.getElementsByTagName('item');
@@ -67,21 +67,38 @@ function displayEvents() {
 		for (var index1=0; index1<items.length; index1++) {
 			var pubDate   = items[index1].getElementsByTagName('pubDate');
 			var title  	  = items[index1].getElementsByTagName('title');
-			var dateSplit = pubDate[0].childNodes[0].nodeValue.split(" ");
+			var desc  	  = items[index1].getElementsByTagName('description')[0].firstChild.nodeValue.replace(/\n/g, "");
+			var dateSplit = pubDate[0].firstChild.nodeValue.split(" ");
 			var timeSplit = dateSplit[4].split(":");
 			var eventDate = new Date(Date.UTC(dateSplit[3], convertMonStrInt(dateSplit[2]), dateSplit[1], timeSplit[0], timeSplit[1], timeSplit[2]));
 			var eventZone = String(eventDate).split("(");
 
 			if (eventDate < today) continue;
-			
+
 			if (eventDate.getTime() !== saveDate.getTime()) {
 				saveDate = eventDate;
+
+				var imgpos = 0;
+				var imgurl = "";
+				do {
+					imgpos = desc.indexOf("<img src=", imgpos+1);
+					if (imgpos > 0) imgurl = desc.substring(imgpos+10, desc.indexOf('"', imgpos+10));
+					if (imgurl.indexOf("vivit_and_hpe")  < 0 & imgurl.indexOf("register") < 0 & imgurl.indexOf("hpe_logo") < 0) break;
+					else (imgurl = "");
+				}
+				while (imgpos > 0);
+
+				if (imgurl == "") imgurl = "images/vivit_logo.png";
+				
 				html += "<div id=eventDate_" + index1 + "' class='eventDateItem'>";
 				html += "<div class='eventDate'>" + days[eventDate.getDay()] +", " + mons[eventDate.getMonth()] + " " + eventDate.getDate() + ", " + eventDate.getFullYear() + "</div>";
 				html += "</div>";
-			
+
 				html += "<div id=eventItem_" + index1 + "' class='eventItem'>";
-				html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[0].childNodes[0].nodeValue + "</div>";
+				html += "<div class='eventFloat'>";
+				html += "<div class='eventTitle' onclick='eventInfo(" + index1 + ")'>" + title[0].firstChild.nodeValue + "</div>";
+				html += "<div class='eventImage'><img src='" + imgurl + "' width='50px;'></div>";
+				html += "</div>";
 				html += "<div class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</div>";
 				html += "<div class='eventLine'></div>";
 				html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + index1 + ")'>Register</a></span>"
@@ -89,9 +106,10 @@ function displayEvents() {
 			}
 		}
 
-		html += "<div data-role='popup' id='popupBasic'><div data-role='main' class='ui-content'><div id='popupContent'></div><a href='#' class='ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left' data-rel='back'>Close</a></div></div></div>";
+		html += "<div id='popupBasic' data-role='popup'><div data-role='main' class='ui-content'><div id='popupContent'></div><a href='#' class='ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left' data-rel='back'>Close</a></div></div></div>";
 
 		$('#eventPage').html(html);
+		$('#popupBasic').hide();
 	}
 }
 
@@ -106,9 +124,23 @@ function eventInfo(which) {
 	var html    = desc[0].firstChild.nodeValue;
 	
 	html += "<br/><br/><a href='#' onclick='eventReg(" + which + ")'>Register</a><br/><br/>";
-	
+		
 	$('#popupContent').html(html);
-	$('#popupBasic').popup();
+	$('#popupBasic').show();
+//	$('#popupBasic').popup();
+	
+    $("#popupBasic").popup({
+        beforeposition: function () {
+            $(this).css({
+                width: window.innerWidth - 10,
+                height: window.innerHeight - 14
+            });
+        },
+        x: 0,
+        y: 0
+    });
+
+    $('#popupBasic').css('overflow-y', 'scroll');
 	$('#popupBasic').popup("open");
 }    
 
