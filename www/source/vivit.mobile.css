@@ -46,13 +46,12 @@ a {
 	position: absolute;
 	top: 0px;
 	left: 75px;
-	font-size: 22pt;
+	font-size: 20pt;
 	white-space: nowrap;
 	overflow: hidden;
 }
 
 .mainHeaderIcon {
-	background-color: white;
 	height: 45px;
 	width: 45px;
 }

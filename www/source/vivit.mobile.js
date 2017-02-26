@@ -106,10 +106,7 @@ function displayEvents() {
 			}
 		}
 
-		html += "<div id='popupBasic' data-role='popup'><div data-role='main' class='ui-content'><div id='popupContent'></div><a href='#' class='ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left' data-rel='back'>Close</a></div></div></div>";
-
 		$('#eventPage').html(html);
-		$('#popupBasic').hide();
 	}
 }
 
@@ -125,25 +122,9 @@ function eventInfo(which) {
 	
 	html += "<br/><br/><a href='#' onclick='eventReg(" + which + ")'>Register</a><br/><br/>";
 		
-	$('#popupContent').html(html);
-	$('#popupBasic').show();
-//	$('#popupBasic').popup();
-	
-    $("#popupBasic").popup({
-        beforeposition: function () {
-            $(this).css({
-                width: window.innerWidth - 10,
-                height: window.innerHeight - 14
-            });
-        },
-        x: 0,
-        y: 0
-    });
-
-    $('#popupBasic').css('overflow-y', 'scroll');
-	$('#popupBasic').popup("open");
+	$('#eventInfoContent').html(html);
+	$("#openEventInfo").click();
 }    
-
 
 
 /**********************************************************************************
@@ -195,7 +176,7 @@ function formatAMPM(date) {
 	var ampm = hours >= 12 ? 'pm' : 'am';
 
 	hours = hours % 12;
-	hours = hours ? hours : 12; // the hour '0' should be '12'
+	hours = hours ? hours : 12; 								// hour 0 should be 12
 	minutes = minutes < 10 ? '0'+minutes : minutes;
 	var strTime = hours + ':' + minutes + ' ' + ampm;
 
