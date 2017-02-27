@@ -1,6 +1,6 @@
 <!--
 /**********************************************************************************
- *                       - V i v i t   W o r l d w id e -
+ *                       - V i v i t   W o r l d w i d e -
  *
  * vivit.mobile.css (VivitMobilePOC)
  *=================================================================================
@@ -155,6 +155,7 @@ a {
 	font-size: 12pt;
 	font-color: #103a71;
 	font-weight: bold;
+	text-decoration: underline;
 }
 
 .eventImage {
@@ -179,5 +180,6 @@ a {
 	margin-left: 10px;
 	margin-right: 20px;
 	font-size: 10pt;
-	font-style: italic;	
+	font-style: italic;
+	text-decoration: underline;
 }
