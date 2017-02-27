@@ -15,15 +15,15 @@
 		xmlns:gap="http://phonegap.com/ns/1.0"
 		id="com.vivit.worldwide.mobile.poc"
 		version="1.0.0"
-		android-versionCode="170560" 
-		ios-CFBundleVersion="170560">
+		android-versionCode="170570" 
+		ios-CFBundleVersion="170570">
 
 
 	<!--===============================================================================
 	 | PhoneGap information.
 	 ================================================================================-->
 
-	<name>VivitMobilePOC</name>
+	<name>Vivit Mobile POC</name>
 	<description>Proof of concept app to experiment with getting the technologies in place.</description>
 	<author email="IT.Support@vivit-worldwide.org" href="http://www.vivit-worldwide.org">Vivit Worldwide</author>
 	<content src="index.html" />

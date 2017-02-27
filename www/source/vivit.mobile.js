@@ -115,13 +115,13 @@ function displayEvents() {
 
 			if (eventDate.getTime() !== saveDate.getTime()) {
 				saveDate = eventDate;
-/*
+/* - This code grabbed the first image in the event description. I replaced it with code that scrapes the event page to get the thumbnails instead. This is under evaluation.
 				var imgpos = 0;
 				var imgurl = "";
 				do {
 					imgpos = desc.indexOf("<img src=", imgpos+1);
 					if (imgpos > 0) imgurl = desc.substring(imgpos+10, desc.indexOf('"', imgpos+10));
-					if (imgurl.indexOf("vivit_and_hpe")  < 0 & imgurl.indexOf("register") < 0 & imgurl.indexOf("hpe_logo") < 0) break;
+					if (imgurl.indexOf("vivit_and_hpe") < 0 & imgurl.indexOf("register") < 0 & imgurl.indexOf("hpe_logo") < 0) break;
 					else (imgurl = "");
 				}
 				while (imgpos > 0);
@@ -135,13 +135,13 @@ function displayEvents() {
 				html += "</div>";
 
 				html += "<div id=eventItem_" + indx1 + "' class='eventItem'>";
-				html += "<div class='eventFloat'>";
-				html += "<div class='eventTitle' onclick='eventInfo(" + indx1 + ")'>" + title[0].firstChild.nodeValue + "</div>";
-				html += "<div class='eventImage'><img src='" + imgurl + "'></div>";
-				html += "</div>";
-				html += "<div class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</div>";
-				html += "<div class='eventLine'></div>";
-				html += "<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + indx1 + ")'>Register</a></span>"
+				html += 	"<div class='eventFloat' onclick='eventInfo(" + indx1 + ")'>";
+				html += 		"<div class='eventImage'><img src='" + imgurl + "' width='100px'></div>";
+				html += 		"<div class='eventTitle'>" + title[0].firstChild.nodeValue + "</div>";
+				html += 		"<br/><span class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</span>";
+				html += 	"</div>";
+				html += 	"<div class='eventLine'></div>";
+				html += 	"<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + indx1 + ")'>Register</a></span>"
 				html += "</div>";
 			}
 		}
@@ -160,8 +160,9 @@ function eventInfo(which) {
 	var desc  	= items[which].getElementsByTagName("description");
 	var html    = desc[0].firstChild.nodeValue;
 	
-	html += "<br/><br/><a href='#' onclick='eventReg(" + which + ")'>Register</a><br/><br/>";
-		
+//	html += "<br/><br/><a href='#' onclick='eventReg(" + which + ")'>Register</a><br/><br/>";
+	html += "<a href='' data-role='button' data-rel='back' data-theme='b' class='ui-link ui-btn ui-btn-b ui-shadow ui-corner-all' role='button'>Close</a>";
+	
 	$('#eventInfoContent').html(html);
 	$("#openEventInfo").click();
 }    

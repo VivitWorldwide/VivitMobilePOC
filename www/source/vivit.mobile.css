@@ -117,8 +117,8 @@ a {
 	font-weight: bold;	
 }
 
-.eventPage {
-	margin-top: 10px;	
+.pageTemp {
+	margin-top: 15px;
 }
 
 .eventDateItem {
@@ -149,9 +149,6 @@ a {
 }
 
 .eventTitle {
-	width: 80%;
-	height: 100%;
-	float: left;
 	font-size: 12pt;
 	font-color: #103a71;
 	font-weight: bold;
@@ -160,11 +157,10 @@ a {
 
 .eventImage {
 	float: right;
-	width: 50px;
+	padding-left: 10px;
 }
 
 .eventTime {
-	margin-top: 20px;
 	font-size: 10pt;
 	font-style: italic;	
 }
@@ -182,4 +178,12 @@ a {
 	font-size: 10pt;
 	font-style: italic;
 	text-decoration: underline;
+}
+
+.underConstruction {
+	margin: 10px;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 14pt;
 }
