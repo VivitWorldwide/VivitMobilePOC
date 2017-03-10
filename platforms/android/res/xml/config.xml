@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-versionCode="170570" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170570" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <name>Vivit Mobile POC</name>
+    <description>Proof of concept app to experiment with getting the technologies in place.</description>
+    <author email="IT.Support@vivit-worldwide.org" href="http://www.vivit-worldwide.org">Vivit Worldwide</author>
+    <content src="index.html" />
+    <access origin="*" />
+    <icon src="www/platforms/android/icon/vivit_logo_hdpi.png" />
+    <allow-navigation href="http://www.vivit-worldwide.org/*" />
+    <allow-navigation href="https://vivitworldwide.site-ym.com/*" />
+    <allow-navigation href="http://c.ymcdn.com/*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="android-targetSdkVersion" value="25" />
+</widget>

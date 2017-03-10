@@ -1,0 +1,189 @@
+<!--
+/**********************************************************************************
+ *                       - V i v i t   W o r l d w i d e -
+ *
+ * vivit.mobile.css (VivitMobilePOC)
+ *=================================================================================
+ * Written by: Mark Ford / 02-11-2017
+ *
+ * Style definitions for the application.
+ **********************************************************************************/
+-->
+
+.ui-panel-inner {
+	padding: 0 !important;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+.mainHeader {
+	height: 66px;
+	background-color: white;	
+}
+
+.mainHeaderLeft {
+	position: absolute;
+	top: 15px;
+	left: 20px;
+}
+
+.mainHeaderRight {
+	position: absolute;
+	float: right;
+	top: 12px;
+	right: 10px
+}
+
+.mainHeaderMenuButton {
+	height: 35px;
+	padding-right: 20px;
+}
+
+.mainHeaderTitle {
+	position: absolute;
+	top: 0px;
+	left: 75px;
+	font-size: 20pt;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.mainHeaderIcon {
+	height: 45px;
+	width: 45px;
+}
+
+.mainPanel {
+	background-color: #518bc9;
+}
+
+.mainPanelBlock {
+	width: 100%;
+	height: 40px;
+	padding-top: 12px;
+	text-align: center;
+	color: white;
+}
+
+.mainPanelBullet {
+	color: yellow;
+}
+
+.mainPanelBlackLine {
+	position: relative;
+	left: 15px;
+	width: 85%;
+	height: 1px;
+	background-color: black;
+}
+
+.mainPanelGreyLine {
+	position: relative;
+	left: 15px;
+	width: 85%;
+	height: 1px;
+	background-color: grey;
+}
+
+.mainPanelSocialMedia {
+	padding: 15px;
+	display: flex;
+	justify-content: center;
+}
+
+.mainPanelVersion {
+	padding-top: 15px;
+	padding-left: 15px; 
+	font-size: 8pt;
+}
+
+.mainPanelBuild {
+	padding-left: 15px; 
+	margin-bottom: 15px;
+	font-size: 8pt;
+}
+
+.mainBannerAddBlackLine {
+	height: 1px;
+	background-color: black;
+}
+
+.pocPage {
+	margin-top: 10px;
+	font-size: 18pt;
+	font-weight: bold;	
+}
+
+.pageTemp {
+	margin-top: 15px;
+}
+
+.eventDateItem {
+	padding: 10px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	border-style: outset;
+	border-width: 1px;
+	background-color: #103a71;
+}
+
+.eventItem {
+	padding: 10px;
+	margin-bottom: 10px;
+	border-style: outset;
+	border-width: 1px;
+}
+
+.eventDate {
+	font-size: 16pt;
+	font-style: italic;
+	color: white;
+}
+
+.eventFloat {
+	clear: both;
+	overflow: hidden;	
+}
+
+.eventTitle {
+	font-size: 12pt;
+	font-color: #103a71;
+	font-weight: bold;
+	text-decoration: underline;
+}
+
+.eventImage {
+	float: right;
+	padding-left: 10px;
+}
+
+.eventTime {
+	font-size: 10pt;
+	font-style: italic;	
+}
+
+.eventLine {
+	height: 1px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	background-color: grey;
+}
+
+.eventAction {
+	margin-left: 10px;
+	margin-right: 20px;
+	font-size: 10pt;
+	font-style: italic;
+	text-decoration: underline;
+}
+
+.underConstruction {
+	margin: 10px;
+	text-align: center;
+	font-style: italic;
+	font-weight: bold;
+	font-size: 14pt;
+}
