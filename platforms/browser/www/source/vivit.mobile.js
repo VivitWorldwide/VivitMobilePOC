@@ -113,37 +113,38 @@ function displayEvents() {
 
 			if (eventDate < today) continue;
 
-			if (eventDate.getTime() !== saveDate.getTime()) {
-				saveDate = eventDate;
 /* - This code grabbed the first image in the event description. I replaced it with code that scrapes the event page to get the thumbnails instead. This is under evaluation.
-				var imgpos = 0;
-				var imgurl = "";
-				do {
-					imgpos = desc.indexOf("<img src=", imgpos+1);
-					if (imgpos > 0) imgurl = desc.substring(imgpos+10, desc.indexOf('"', imgpos+10));
-					if (imgurl.indexOf("vivit_and_hpe") < 0 & imgurl.indexOf("register") < 0 & imgurl.indexOf("hpe_logo") < 0) break;
-					else (imgurl = "");
-				}
-				while (imgpos > 0);
-				if (imgurl == "") imgurl = "images/vivit_logo.png";
+			var imgpos = 0;
+			var imgurl = "";
+			do {
+				imgpos = desc.indexOf("<img src=", imgpos+1);
+				if (imgpos > 0) imgurl = desc.substring(imgpos+10, desc.indexOf('"', imgpos+10));
+				if (imgurl.indexOf("vivit_and_hpe") < 0 & imgurl.indexOf("register") < 0 & imgurl.indexOf("hpe_logo") < 0) break;
+				else (imgurl = "");
+			}
+			while (imgpos > 0);
+			if (imgurl == "") imgurl = "images/vivit_logo.png";
 */
-				if (thmb[indx1] != "") imgurl = "https://vivitworldwide.site-ym.com" + thmb[indx1]; 
-				else imgurl = "images/vivit_logo.png";
+			if (thmb[indx1] != "") imgurl = "https://vivitworldwide.site-ym.com" + thmb[indx1]; 
+			else imgurl = "images/vivit_logo.png";
+
+			if (eventDate.getFullYear() != saveDate.getFullYear() | eventDate.getMonth() != saveDate.getMonth() | eventDate.getDate() != saveDate.getDate()) {
+				saveDate = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 0, 0, 0, 0);
 				
 				html += "<div id=eventDate_" + indx1 + "' class='eventDateItem'>";
 				html += "<div class='eventDate'>" + days[eventDate.getDay()] +", " + mons[eventDate.getMonth()] + " " + eventDate.getDate() + ", " + eventDate.getFullYear() + "</div>";
 				html += "</div>";
-
-				html += "<div id=eventItem_" + indx1 + "' class='eventItem'>";
-				html += 	"<div class='eventFloat' onclick='eventInfo(" + indx1 + ")'>";
-				html += 		"<div class='eventImage'><img src='" + imgurl + "' width='100px'></div>";
-				html += 		"<div class='eventTitle'>" + title[0].firstChild.nodeValue + "</div>";
-				html += 		"<br/><span class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</span>";
-				html += 	"</div>";
-				html += 	"<div class='eventLine'></div>";
-				html += 	"<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + indx1 + ")'>Register</a></span>"
-				html += "</div>";
 			}
+				
+			html += "<div id=eventItem_" + indx1 + "' class='eventItem'>";
+			html += 	"<div class='eventFloat' onclick='eventInfo(" + indx1 + ")'>";
+			html += 		"<div class='eventImage'><img src='" + imgurl + "' width='100px'></div>";
+			html += 		"<div class='eventTitle'>" + title[0].firstChild.nodeValue + "</div>";
+			html += 		"<br/><span class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</span>";
+			html += 	"</div>";
+			html += 	"<div class='eventLine'></div>";
+			html += 	"<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + indx1 + ")'>Register</a></span>"
+			html += "</div>";
 		}
 
 		$('#eventPage').html(html);

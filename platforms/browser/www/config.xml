@@ -1,10 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="170570" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170570" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget android-versionCode="170680" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170680" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Vivit Mobile POC</name>
     <description>Proof of concept app to experiment with getting the technologies in place.</description>
     <author email="IT.Support@vivit-worldwide.org" href="http://www.vivit-worldwide.org">Vivit Worldwide</author>
     <content src="index.html" />
     <access origin="*" />
+    <splash src="splash.png" />
     <icon src="www/platforms/android/icon/vivit_logo_hdpi.png" />
     <allow-navigation href="http://www.vivit-worldwide.org/*" />
     <allow-navigation href="https://vivitworldwide.site-ym.com/*" />

@@ -15,8 +15,8 @@
 		xmlns:gap="http://phonegap.com/ns/1.0"
 		id="com.vivit.worldwide.mobile.poc"
 		version="1.0.0"
-		android-versionCode="170570" 
-		ios-CFBundleVersion="170570">
+		android-versionCode="170680" 
+		ios-CFBundleVersion="170680">
 
 
 	<!--===============================================================================
@@ -39,7 +39,6 @@
 	<!--===============================================================================
 	 | Android specific preferences.
 	 ================================================================================-->
-
 	<platform name="android">
 		<preference name="android-targetSdkVersion" value="25"/>
 	</platform>
@@ -48,22 +47,25 @@
 	<!--===============================================================================
 	 | iOS specific preferences.
 	 ================================================================================-->
-
 	<platform name="ios"/>
 
 
 	<!--===============================================================================
 	 | PhoneGap/Cordova plugins.
 	 ================================================================================-->
-
     <plugin name="cordova-plugin-inappbrowser" spec="https://github.com/apache/cordova-plugin-inappbrowser"/>
 	<plugin name="cordova-plugin-whitelist" spec="https://github.com/apache/cordova-plugin-whitelist"/>
+	<gap:plugin name="org.apache.cordova.splashscreen" />
 	
+    <gap:splash src="images/screen-ldpi-portrait.png"  gap:platform="android" gap:density="ldpi" />
+    <gap:splash src="images/screen-mdpi-portrait.png"  gap:platform="android" gap:density="mdpi" />
+    <gap:splash src="images/screen-hdpi-portrait.png"  gap:platform="android" gap:density="hdpi" />
+    <gap:splash src="images/screen-xhdpi-portrait.png" gap:platform="android" gap:density="xhdpi" />
+
 
 	<!--===============================================================================
 	 | Whitelisted URLs.
 	 ================================================================================-->
-
 	<allow-navigation href="http://www.vivit-worldwide.org/*"/>
 	<allow-navigation href="https://vivitworldwide.site-ym.com/*"/>
 	<allow-navigation href="http://c.ymcdn.com/*"/>
