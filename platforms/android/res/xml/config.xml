@@ -7,20 +7,34 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
     <name>Vivit Mobile POC</name>
     <description>Proof of concept app to experiment with getting the technologies in place.</description>
     <author email="IT.Support@vivit-worldwide.org" href="http://www.vivit-worldwide.org">Vivit Worldwide</author>
     <content src="index.html" />
-    <access origin="*" />
-    <icon src="www/platforms/android/icon/vivit_logo_hdpi.png" />
-    <gap:plugin name="org.apache.cordova.splashscreen" />
-    <gap:splash gap:density="ldpi" gap:platform="android" src="images/screen-ldpi-portrait.png" />
-    <gap:splash gap:density="mdpi" gap:platform="android" src="images/screen-mdpi-portrait.png" />
-    <gap:splash gap:density="hdpi" gap:platform="android" src="images/screen-hdpi-portrait.png" />
-    <gap:splash gap:density="xhdpi" gap:platform="android" src="images/screen-xhdpi-portrait.png" />
+    <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
+    <icon src="www/icon.png" />
+    <icon gap:density="ldpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
+    <icon gap:density="mdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
+    <icon gap:density="hdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
+    <icon gap:density="xhdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
+    <gap:splash gap:density="ldpi" gap:platform="android" src="www/res/screen/android/screen-ldpi-portrait.png" />
+    <gap:splash gap:density="mdpi" gap:platform="android" src="www/res/screen/android/screen-mdpi-portrait.png" />
+    <gap:splash gap:density="hdpi" gap:platform="android" src="www/res/screen/android/screen-hdpi-portrait.png" />
+    <gap:splash gap:density="xhdpi" gap:platform="android" src="www/res/screen/android/screen-xhdpi-portrait.png" />
     <allow-navigation href="http://www.vivit-worldwide.org/*" />
     <allow-navigation href="https://vivitworldwide.site-ym.com/*" />
     <allow-navigation href="http://c.ymcdn.com/*" />
+    <access origin="*" />
     <preference name="loglevel" value="DEBUG" />
+    <preference name="phonegap-version" value="cli-6.5.0" />
+    <preference name="orientation" value="default" />
+    <preference name="target-device" value="universal" />
+    <preference name="fullscreen" value="false" />
     <preference name="android-targetSdkVersion" value="25" />
+    <preference name="android-installLocation" value="auto" />
+    <preference name="android-build-tool" value="gradle" />
 </widget>
