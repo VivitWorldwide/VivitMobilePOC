@@ -17,15 +17,43 @@ var requestEventThumbs	= new XMLHttpRequest();
 var parser 				= new DOMParser();
 
 
+var vivitMobile = {
+/******************************************************************************
+ * Perform initialization routines.
+ ******************************************************************************/
+initialize: function() {
+	this.bindEvents();
+	initializePage();
+},
+
+
+/******************************************************************************
+ * Bind any events that are required on startup. Common events are:
+ * 'load', 'deviceready', 'offline', and 'online'.
+ ******************************************************************************/
+bindEvents: function() {
+	document.addEventListener('deviceready', this.onDeviceReady, false);
+},
+
+
+/******************************************************************************
+ * Fires when the device is ready.
+ ******************************************************************************/
+onDeviceReady: function() {
+	initPushwoosh();
+},
+};
+
+
 /**********************************************************************************
- * Initialization routines.
+ * Initialize page elements.
  **********************************************************************************/
-$(document).ready(function() {
-	$('#mainPanel').load('source/mainPanel.htm');													// load the main panel html
+function initializePage() {
+	$('#mainPanel').load('htm/mainPanel.htm');														// load the main panel html
 	
 	for (var indx1=1; indx1<8; indx1++) {															// load the main header html onto each page
-		$('#mainHeader' + indx1).load('source/mainHeader.htm');
-		$('#mainBannerAdd' + indx1).load('source/mainBannerAdd.htm');								// load the main banner add html onto each page
+		$('#mainHeader' + indx1).load('htm/mainHeader.htm');
+		$('#mainBannerAdd' + indx1).load('htm/mainBannerAdd.htm');									// load the main banner add html onto each page
 	}
 
 	$('#mainPanel').enhanceWithin().panel();														// establish the main panel
@@ -41,7 +69,31 @@ $(document).ready(function() {
 	$('#mainPanel').on('click', '#website', function() {											// load the vivit website when prompted
 		launchWebsite("http://vivit-worldwide.org/");
 	});
-});
+}
+
+
+/**********************************************************************************
+ * Initialize Pushwoosh to receive application notifications.
+ **********************************************************************************/
+function initPushwoosh() {
+    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+
+    pushNotification.onDeviceReady({
+        projectid: "305957757931",
+        appid: "75840-C9EAF",
+        serviceName: ""
+    });
+
+    pushNotification.registerDevice(
+        function(status) {
+            document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
+            onPushwooshInitialized(pushNotification);
+        },
+        function(status) {
+            alert("failed to register: " + status);
+        }
+    );
+}
 
 
 /**********************************************************************************
@@ -60,20 +112,17 @@ function loadEvents() {
  * images have loaded, display the events.
  **********************************************************************************/
 function requestEventThumbnails() {
-	requestEventThumbs.onreadystatechange = function() {displayEvents();};
+	requestEventThumbs.onreadystatechange = function() {getThumbNails();};
 	requestEventThumbs.open("GET", "https://vivitworldwide.site-ym.com/events/event_list.asp", true);
 	requestEventThumbs.send();
 }
 
 
 /**********************************************************************************
- * Display the Vivit Upcoming Events information.  This is triggered by the RSS
- * feed load.
+ * Get the thumbnail images from the Vivit Upcoming Events information.  This is
+ * triggered by the Vivit community events page load.
  **********************************************************************************/
-function displayEvents() {
-	var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-	var mons = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	var html = "";
+function getThumbNails() {
 	var thmb = [];
 	var tcnt = 0;
 
@@ -81,6 +130,7 @@ function displayEvents() {
 		var desc = requestEventThumbs.responseText;
 		var imgpos = 0;
 		var imgurl = "";
+		
 		do {
 			imgpos = desc.indexOf("<img src=", imgpos+1);
 			var quote1pos = desc.indexOf('"', imgpos+10);
@@ -94,7 +144,19 @@ function displayEvents() {
 			}
 		}
 		while (imgpos > 0);
+		
+		displayEvents(thmb);
 	}
+}
+	
+/**********************************************************************************
+ * Display the Vivit Upcoming Events information.  This is triggered by the RSS
+ * feed load.
+ **********************************************************************************/
+function displayEvents(thmb) {
+	var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+	var mons = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var html = "";
 	
 	if (requestEvents.readyState == XMLHttpRequest.DONE & requestEvents.status == 200) {
 		var xmlDoc 	  = parser.parseFromString(requestEvents.responseText, "text/xml");
@@ -123,10 +185,10 @@ function displayEvents() {
 				else (imgurl = "");
 			}
 			while (imgpos > 0);
-			if (imgurl == "") imgurl = "images/vivit_logo.png";
+			if (imgurl == "") imgurl = "img/vivit_logo.png";
 */
 			if (thmb[indx1] != "") imgurl = "https://vivitworldwide.site-ym.com" + thmb[indx1]; 
-			else imgurl = "images/vivit_logo.png";
+			else imgurl = "img/vivit_logo.png";
 
 			if (eventDate.getFullYear() != saveDate.getFullYear() | eventDate.getMonth() != saveDate.getMonth() | eventDate.getDate() != saveDate.getDate()) {
 				saveDate = new Date(eventDate.getFullYear(), eventDate.getMonth(), eventDate.getDate(), 0, 0, 0, 0);
@@ -143,7 +205,7 @@ function displayEvents() {
 			html += 		"<br/><span class='eventTime'><b>Time:</b> " + formatAMPM(eventDate) + " - (" + eventZone[1] + "</span>";
 			html += 	"</div>";
 			html += 	"<div class='eventLine'></div>";
-			html += 	"<img src='images\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='images\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + indx1 + ")'>Register</a></span>"
+			html += 	"<img src='img\\ical.gif'><span class='eventAction'>Export to Your Calendar</span><img src='img\\notepad.gif'><span class='eventAction'><a href='#' onclick='eventReg(" + indx1 + ")'>Register</a></span>"
 			html += "</div>";
 		}
 

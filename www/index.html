@@ -19,16 +19,21 @@
 	<meta charset='UTF-8'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<title>Vivit Mobile POC</title>
-	<link rel='stylesheet' href='jquery_cdn/jquery.mobile-1.4.5.min.css'>
-	<link rel='stylesheet' href='source/vivit.mobile.css'>
+	<link rel='stylesheet' href='spec/jquery.mobile-1.4.5.min.css'>
+	<link rel='stylesheet' href='css/vivit.mobile.css'>
 		
-	<script src="cordova.js"></script>
-	<script src='jquery_cdn/jquery-1.12.4.min.js'></script>
-	<script src='jquery_cdn/jquery.mobile-1.4.5.min.js'></script>
-	<script src='source/vivit.mobile.js'></script>
+	<script src='spec/jquery-1.12.4.min.js'></script>
+	<script src='spec/jquery.mobile-1.4.5.min.js'></script>
+	<script src='js/vivit.mobile.js'></script>
 </head>
 
 <body>
+	<!--===============================================================================
+	 | Cordova reference.
+	 ================================================================================-->
+	<script src="cordova.js"></script>
+
+
 	<!--===============================================================================
 	 | Pull-out menu (aka panel) definition.
 	 ================================================================================-->
@@ -70,7 +75,7 @@
 		<div class='ui-content' data-role='main'>
 			<div id='mainBannerAdd3'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
-			<img src='images\2017_VivitMemberBrochure.bmp' width='100%'>
+			<img src='img/2017_VivitMemberBrochure.bmp' width='100%'>
 		</div>
 	</div>
 
@@ -84,7 +89,7 @@
 		<div class='ui-content' data-role='main'>
 			<div id='mainBannerAdd4'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
-			<img src='images\lugs_sigs.bmp' width='100%'>
+			<img src='img/lugs_sigs.bmp' width='100%'>
 		</div>
 	</div>
 
@@ -98,7 +103,7 @@
 		<div class='ui-content' data-role='main'>
 			<div id='mainBannerAdd5'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
-			<img src='images\tech_beacon.bmp' width='100%'>
+			<img src='img/tech_beacon.bmp' width='100%'>
 <!-- 		<div id='techBeaconPage' class='pageTemp'>Loading TechBeacon...</div> -->
 		</div>
 	</div>
@@ -146,6 +151,9 @@
   		</div>
 	</div>
 	
+	<script type="text/javascript">
+		vivitMobile.initialize();
+	</script>
 </body>
 
 </html>

@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="170680" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170680" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget android-versionCode="170690" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170690" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>Vivit Mobile POC</name>
     <description>Proof of concept app to experiment with getting the technologies in place.</description>
     <author email="IT.Support@vivit-worldwide.org" href="http://www.vivit-worldwide.org">Vivit Worldwide</author>
     <content src="index.html" />
+    <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
     <icon src="www/icon.png" />
     <icon gap:density="ldpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
     <icon gap:density="mdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
@@ -13,11 +14,6 @@
     <gap:splash gap:density="mdpi" gap:platform="android" src="www/res/screen/android/screen-mdpi-portrait.png" />
     <gap:splash gap:density="hdpi" gap:platform="android" src="www/res/screen/android/screen-hdpi-portrait.png" />
     <gap:splash gap:density="xhdpi" gap:platform="android" src="www/res/screen/android/screen-xhdpi-portrait.png" />
-    <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
-    <gap:splash gap:density="ldpi" gap:platform="android" src="images/screen-ldpi-portrait.png" />
-    <gap:splash gap:density="mdpi" gap:platform="android" src="images/screen-mdpi-portrait.png" />
-    <gap:splash gap:density="hdpi" gap:platform="android" src="images/screen-hdpi-portrait.png" />
-    <gap:splash gap:density="xhdpi" gap:platform="android" src="images/screen-xhdpi-portrait.png" />
     <allow-navigation href="http://www.vivit-worldwide.org/*" />
     <allow-navigation href="https://vivitworldwide.site-ym.com/*" />
     <allow-navigation href="http://c.ymcdn.com/*" />
