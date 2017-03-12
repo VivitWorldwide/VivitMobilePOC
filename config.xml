@@ -72,10 +72,10 @@
 	 | Icons for each platform.
 	 ================================================================================-->
     <icon src="www/icon.png" />
-    <icon src="www/res/icon/android/vivit_logo_hdpi.png"	gap:platform="android"	gap:density="ldpi" />
-    <icon src="www/res/icon/android/vivit_logo_hdpi.png"	gap:platform="android"	gap:density="mdpi" />
-    <icon src="www/res/icon/android/vivit_logo_hdpi.png"	gap:platform="android"	gap:density="hdpi" />
-    <icon src="www/res/icon/android/vivit_logo_hdpi.png"	gap:platform="android"	gap:density="xhdpi" />
+    <icon src="www/res/icon/android/icon-36-ldpi.png"	gap:platform="android"	gap:density="ldpi" />
+    <icon src="www/res/icon/android/icon-48-mdpi.png"	gap:platform="android"	gap:density="mdpi" />
+    <icon src="www/res/icon/android/icon-72-hdpi.png"	gap:platform="android"	gap:density="hdpi" />
+    <icon src="www/res/icon/android/icon-96-xhdpi.png"	gap:platform="android"	gap:density="xhdpi" />
 
 
 	<!--===============================================================================
