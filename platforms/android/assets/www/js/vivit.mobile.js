@@ -76,23 +76,23 @@ function initializePage() {
  * Initialize Pushwoosh to receive application notifications.
  **********************************************************************************/
 function initPushwoosh() {
-    var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
+	var pushNotification = cordova.require("pushwoosh-cordova-plugin.PushNotification");
 
-    pushNotification.onDeviceReady({
-        projectid: "305957757931",
-        appid: "75840-C9EAF",
-        serviceName: ""
-    });
+	pushNotification.onDeviceReady({
+		projectid: "305957757931",
+		appid: "75840-C9EAF",
+		serviceName: ""
+	});
 
-    pushNotification.registerDevice(
-        function(status) {
-            document.getElementById("pushToken").innerHTML = status.pushToken + "<p>";
-            onPushwooshInitialized(pushNotification);
-        },
-        function(status) {
-            alert("failed to register: " + status);
-        }
-    );
+	pushNotification.registerDevice(
+		function(status) {
+			alert("Notifications registered: " + status);
+		},
+		
+		function(status) {
+			alert("Failed to register: " + status);
+		}
+	);
 }
 
 
