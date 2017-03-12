@@ -15,8 +15,8 @@
 		xmlns:gap="http://phonegap.com/ns/1.0"
 		id="com.vivit.worldwide.mobile.poc"
 		version="1.0.0"
-		android-versionCode="170690" 
-		ios-CFBundleVersion="170690">
+		android-versionCode="170700" 
+		ios-CFBundleVersion="170700">
 
 
 	<!--===============================================================================

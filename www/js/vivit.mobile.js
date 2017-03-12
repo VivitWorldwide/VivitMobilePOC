@@ -86,7 +86,7 @@ function initPushwoosh() {
 
 	pushNotification.registerDevice(
 		function(status) {
-			alert("Notifications registered: " + status);
+//			alert("Notifications registered: " + status);
 		},
 		
 		function(status) {
