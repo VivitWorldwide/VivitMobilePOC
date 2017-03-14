@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-versionCode="170690" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170690" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget android-versionCode="170700" id="com.vivit.worldwide.mobile.poc" ios-CFBundleVersion="170700" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <feature name="InAppBrowser">
         <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
     </feature>
@@ -17,10 +17,10 @@
     <content src="index.html" />
     <gap:plugin name="pushwoosh-pgb-plugin" source="npm" />
     <icon src="www/icon.png" />
-    <icon gap:density="ldpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
-    <icon gap:density="mdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
-    <icon gap:density="hdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
-    <icon gap:density="xhdpi" gap:platform="android" src="www/res/icon/android/vivit_logo_hdpi.png" />
+    <icon gap:density="ldpi" gap:platform="android" src="www/res/icon/android/icon2-36-ldpi.png" />
+    <icon gap:density="mdpi" gap:platform="android" src="www/res/icon/android/icon2-48-mdpi.png" />
+    <icon gap:density="hdpi" gap:platform="android" src="www/res/icon/android/icon2-72-hdpi.png" />
+    <icon gap:density="xhdpi" gap:platform="android" src="www/res/icon/android/icon2-96-xhdpi.png" />
     <gap:splash gap:density="ldpi" gap:platform="android" src="www/res/screen/android/screen-ldpi-portrait.png" />
     <gap:splash gap:density="mdpi" gap:platform="android" src="www/res/screen/android/screen-mdpi-portrait.png" />
     <gap:splash gap:density="hdpi" gap:platform="android" src="www/res/screen/android/screen-hdpi-portrait.png" />

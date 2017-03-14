@@ -1,0 +1,2 @@
+- updated icons to have white background behind text only
+- updated banner add

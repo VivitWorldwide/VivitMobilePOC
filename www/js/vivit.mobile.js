@@ -51,7 +51,7 @@ onDeviceReady: function() {
 function initializePage() {
 	$('#mainPanel').load('htm/mainPanel.htm');														// load the main panel html
 	
-	for (var indx1=1; indx1<8; indx1++) {															// load the main header html onto each page
+	for (var indx1=1; indx1<9; indx1++) {															// load the main header html onto each page
 		$('#mainHeader' + indx1).load('htm/mainHeader.htm');
 		$('#mainBannerAdd' + indx1).load('htm/mainBannerAdd.htm');									// load the main banner add html onto each page
 	}
