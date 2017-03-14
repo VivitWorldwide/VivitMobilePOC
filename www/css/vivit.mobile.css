@@ -60,6 +60,15 @@ a {
 	background-color: #518bc9;
 }
 
+.mainPanelConnStatus {
+	width: 100%;
+	height: 40px;
+	padding: 10px;
+	text-align: left;
+	background-color: #fec340;
+	color: black;
+}
+
 .mainPanelBlock {
 	width: 100%;
 	height: 40px;
@@ -115,6 +124,12 @@ a {
 	margin-top: 10px;
 	font-size: 18pt;
 	font-weight: bold;	
+}
+
+.loginPage {
+	margin-top: 20px;
+	font-size: 12pt;
+	font-weight: normal;	
 }
 
 .pageTemp {

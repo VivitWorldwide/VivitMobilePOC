@@ -13,6 +13,11 @@
 <img src='img/Community_1950x487.jpg' height='25%' width='100%'>
 
 <div class='mainPanel'> 
+	<div class='mainPanelConnStatus'>
+		<span id='connName'>Not</span> Logged In<br/>
+		Vivit ID: <span id='connNum'></span>
+	</div>
+
 	<div class='mainPanelBlock'>
 		<a href='#pocOnly' data-transition='fade'>THIS IS A POC</a> <span class='mainPanelBullet'>&#x25B6;</span>
 	</div>
@@ -21,7 +26,7 @@
 	<div class='mainPanelGreyLine'></div>
 
 	<div class='mainPanelBlock'>
-		<a href='#login' data-transition='fade'>LOGIN/JOIN VIVIT</a> <span class='mainPanelBullet'>&#x25B6;</span>
+		<a id='logout' href='#loginLogout' data-transition='fade'><span id='mainPanelLoginText'>LOGIN/JOIN VIVIT</span></a> <span class='mainPanelBullet'>&#x25B6;</span>
 	</div>
 
 	<div class='mainPanelBlackLine'></div>

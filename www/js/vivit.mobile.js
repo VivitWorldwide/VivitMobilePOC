@@ -15,6 +15,7 @@ var inAppBrowserRef;
 var requestEvents 		= new XMLHttpRequest();
 var requestEventThumbs	= new XMLHttpRequest();
 var parser 				= new DOMParser();
+var userLoggedIn		= false;
 
 
 var vivitMobile = {
@@ -68,6 +69,14 @@ function initializePage() {
 
 	$('#mainPanel').on('click', '#website', function() {											// load the vivit website when prompted
 		launchWebsite("http://vivit-worldwide.org/");
+	});
+
+	$('#mainPanel').on('click', '#logout', function() {
+		logoutUser();
+	});
+	
+	$('#loginLogout').on('click', '#loginButton', function() {											// load the tech beacon info from the vivit website
+		loginUser();
 	});
 }
 
@@ -361,4 +370,46 @@ function loadErrorCallBack(params) {
  
 	inAppBrowserRef.close();
 	inAppBrowserRef = undefined;
+}
+
+/**********************************************************************************
+ * 
+ **********************************************************************************/
+function loginUser() {
+	if (!userLoggedIn) {
+		$("#connName").text("{NAME}");
+		$("#connNum").text("12345678");
+		$("#mainPanelLoginText").text("LOGOUT");
+		userLoggedIn = true;
+
+		var $popUp = $("<div/>").popup({
+	        dismissible : false,
+	        theme : "a",
+	        overlyaTheme : "a",
+	        transition : "pop"
+	    }).open("popupafterclose", function() {
+	        $(this).remove();
+	    });
+
+		$("<p/>", {
+	        text : PURCHASE_TEXT
+	    }).appendTo($popUp);
+
+		$popUp.appendTo($("$connName"));
+
+		$popUp.popup("open").trigger("create");
+	}
+}
+
+
+/**********************************************************************************
+ * 
+ **********************************************************************************/
+function logoutUser() {
+	if (userLoggedIn) {
+		$("#connName").text("Not");
+		$("#connNum").text("");
+		$("#mainPanelLoginText").text("LOGIN/JOIN VIVIT");
+		userLoggedIn = false;
+	}
 }
