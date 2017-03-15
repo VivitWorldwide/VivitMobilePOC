@@ -52,7 +52,7 @@ onDeviceReady: function() {
 function initializePage() {
 	$('#mainPanel').load('htm/mainPanel.htm');														// load the main panel html
 	
-	for (var indx1=1; indx1<9; indx1++) {															// load the main header html onto each page
+	for (var indx1=1; indx1<10; indx1++) {															// load the main header html onto each page
 		$('#mainHeader' + indx1).load('htm/mainHeader.htm');
 		$('#mainBannerAdd' + indx1).load('htm/mainBannerAdd.htm');									// load the main banner add html onto each page
 	}
@@ -71,12 +71,12 @@ function initializePage() {
 		launchWebsite("http://vivit-worldwide.org/");
 	});
 
-	$('#mainPanel').on('click', '#logout', function() {
-		logoutUser();
-	});
-	
-	$('#loginLogout').on('click', '#loginButton', function() {											// load the tech beacon info from the vivit website
+	$('#login').on('click', '#loginButton', function() {											// load the tech beacon info from the vivit website
 		loginUser();
+	});
+
+	$('#logout').on('click', '#logoutButton', function() {
+		logoutUser();
 	});
 }
 
@@ -372,6 +372,7 @@ function loadErrorCallBack(params) {
 	inAppBrowserRef = undefined;
 }
 
+
 /**********************************************************************************
  * 
  **********************************************************************************/
@@ -381,24 +382,17 @@ function loginUser() {
 		$("#connNum").text("12345678");
 		$("#mainPanelLoginText").text("LOGOUT");
 		userLoggedIn = true;
-
-		var $popUp = $("<div/>").popup({
-	        dismissible : false,
-	        theme : "a",
-	        overlyaTheme : "a",
-	        transition : "pop"
-	    }).open("popupafterclose", function() {
-	        $(this).remove();
-	    });
-
-		$("<p/>", {
-	        text : PURCHASE_TEXT
-	    }).appendTo($popUp);
-
-		$popUp.appendTo($("$connName"));
-
-		$popUp.popup("open").trigger("create");
+		openPopup("#loginConfirmation");
+		$("#loginLogoutRef").attr("href", "#logout");
 	}
+}
+
+
+/**********************************************************************************
+ * 
+ **********************************************************************************/
+function openPopup(popupDiv) {
+	var popup = setInterval(function() {$(popupDiv).popup("open", {overlyaTheme: "a"}).on("popupafterclose", function() {$("body").pagecontainer("change", "#pocOnly");}); clearInterval(popup);}, 1);
 }
 
 
@@ -411,5 +405,7 @@ function logoutUser() {
 		$("#connNum").text("");
 		$("#mainPanelLoginText").text("LOGIN/JOIN VIVIT");
 		userLoggedIn = false;
+		openPopup("#logoutConfirmation");
+		$("#loginLogoutRef").attr("href", "#login");
 	}
 }

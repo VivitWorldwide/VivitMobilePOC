@@ -48,7 +48,15 @@
 
 		<div class='ui-content' data-role='main'>
 			<div id='mainBannerAdd1'></div>
-			<div class='pocPage'>This is a POC (proof of concept) version of the Vivit Mobile app. It is not necessarily reflective of what the actual Vivit Mobile app will look like. It is purely for experimentation with various design ideas and the technologies required to create mobile apps.<br/><br/>This POC app contains experimental features, things that might not work or that don't work very well (yet), and most likely several bugs here and there.</div>
+			<div class='pocPage'>This is a POC (proof of concept) version of the Vivit Mobile app. It is not necessarily reflective of what the actual Vivit Mobile app will look like. It is purely for experimentation with various design ideas and the technologies required to create mobile apps.<br/><br/>
+				Items that work right now:
+				<ol>
+					<li>Login/Join Vivit Page - only the UI elements are working - no API calls are made yet.</li><br/>
+					<li>Logout Page - only the UI elements are working - no API calls are made yet.</li><br/>
+					<li>Upcoming Events Page - events display live from the website. Click on the title to get more info. Click on Registration link to go to the Vivit website to register.</li><br/>
+					<li>Vivit Website Page - Opens a browser with the Vivit website.</li><br/>
+				</ol>
+			</div>
 		</div>
 	</div>
 
@@ -56,11 +64,11 @@
 	<!--===============================================================================
 	 | Login/Join Vivit page definition.
 	 ================================================================================-->
-	<div id='loginLogout' data-role='page'>
-		<div id='mainHeader2' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+	<div id='login' data-role='page'>
+ 		<div id='mainHeader2' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-			<div id='mainBannerAdd2'></div>
+ 			<div id='mainBannerAdd2'></div>
 			<div class='loginPage'>
 				Vivit Member Login:
 				<input type='text' 		id='vivitUsername' 	name='vivitUsername' 	placeholder='Vivit Username' value = ''>
@@ -68,10 +76,40 @@
 				<label for="rememberMe">Remember Me</label>
 				<input type='checkbox' 	id='rememberMe' 	name='rememberMe'>
 				<a id='loginButton' href='#loginButton' class="ui-btn ui-btn-inline">Sign In</a>
-				<br/><br/>
+<!-- 			<br/><br/>
 				<a href="#" class="ui-btn ui-corner-all">Forgot my Vivit Username</a>
 				<a href="#" class="ui-btn ui-corner-all">Reset my Vivit Password</a>
 				<a href="#" class="ui-btn ui-corner-all">New Members: Join Vivit Worldwide</a>
+-->
+			</div>
+
+			<div id="loginConfirmation" data-role="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				<div role="main" class="ui-content">
+					<h3 class="ui-title">You have been successfully logged in!</h3>
+					<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">OK</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!--===============================================================================
+	 | Logout page definition.
+	 ================================================================================-->
+	<div id='logout' data-role='page'>
+ 		<div id='mainHeader3' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+
+		<div class='ui-content' data-role='main'>
+ 			<div id='mainBannerAdd3'></div>
+			<div class='loginPage'>
+				<a id='logoutButton' href='#logoutButton' class="ui-btn ui-btn-inline">Log out</a>
+			</div>
+
+			<div id="logoutConfirmation" data-role="popup" data-overlay-theme="b" data-theme="b" data-dismissible="false" style="max-width:400px;">
+				<div role="main" class="ui-content">
+					<h3 class="ui-title">You have been successfully logged out!</h3>
+					<a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b" data-rel="back">OK</a>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -81,10 +119,10 @@
 	 | Upcoming Events page definition.
 	 ================================================================================-->
 	<div id='upcomingEvents' data-role='page'>
-		<div id='mainHeader3' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+		<div id='mainHeader4' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-			<div id='mainBannerAdd3'></div>
+			<div id='mainBannerAdd4'></div>
 			<div id='eventPage' class='pageTemp'>Loading Events...</div>
 		</div>
 	</div>
@@ -94,10 +132,10 @@
 	 | Member Brochure page definition.
 	 ================================================================================-->
 	<div id='memberBrochure' data-role='page'>
-		<div id='mainHeader4' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+		<div id='mainHeader5' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-			<div id='mainBannerAdd4'></div>
+			<div id='mainBannerAdd5'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
 			<img src='img/2017_VivitMemberBrochure.bmp' width='100%'>
 		</div>
@@ -108,10 +146,10 @@
 	 | Lugs and Sigs page definition.
 	 ================================================================================-->
 	<div id='lugsSigs' data-role='page'>
-		<div id='mainHeader5' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+		<div id='mainHeader6' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-		<div id='mainBannerAdd5'></div>
+		<div id='mainBannerAdd6'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
 			<img src='img/lugs_sigs.bmp' width='100%'>
 		</div>
@@ -122,10 +160,10 @@
 	 | TechBeacon page definition.
 	 ================================================================================-->
 	<div id='techBeacon' data-role='page'>
-		<div id='mainHeader6' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+		<div id='mainHeader7' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-			<div id='mainBannerAdd6'></div>
+			<div id='mainBannerAdd7'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
 			<img src='img/tech_beacon.bmp' width='100%'>
 <!-- 		<div id='techBeaconPage' class='pageTemp'>Loading TechBeacon...</div> -->
@@ -137,10 +175,10 @@
 	 | Vivit Website page definition.
 	 ================================================================================-->
 	<div id='vivitWebsite' data-role='page'>
-		<div id='mainHeader7' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+		<div id='mainHeader8' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-			<div id='mainBannerAdd7'></div>
+			<div id='mainBannerAdd8'></div>
 			<div id='websiteReference' class='pageTemp'></div>
 		</div>
 	</div>
@@ -150,10 +188,10 @@
 	 | Application Settings page definition.
 	 ================================================================================-->
 	<div id='appSettings' data-role='page'>
-		<div id='mainHeader8' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
+		<div id='mainHeader9' class='mainHeader' data-role='header' data-position='fixed' data-tap-toggle='false'></div>
 
 		<div class='ui-content' data-role='main'>
-			<div id='mainBannerAdd8'></div>
+			<div id='mainBannerAdd9'></div>
 			<div class='underConstruction'>[This page is under construction.]</div>
 			<div>
 				Notifications: <input type='checkbox' data-role='flipswitch' name='switch' id='switch' checked>
@@ -175,6 +213,11 @@
   		</div>
 	</div>
 	
+
+	<!--===============================================================================
+	 | 
+	 ================================================================================-->
+
 
 	<!--===============================================================================
 	 | Kick off the initialization process.

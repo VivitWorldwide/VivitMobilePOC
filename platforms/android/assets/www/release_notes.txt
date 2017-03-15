@@ -1,2 +1,3 @@
 - updated icons to have white background behind text only
-- updated banner add
+- updated banner add to new one
+- added login page option (doesn't call APIs yet)
